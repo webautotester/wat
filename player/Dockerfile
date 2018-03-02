@@ -39,10 +39,10 @@ RUN apt-get install -y \
 RUN mkdir /tmp/run
 WORKDIR /tmp/run
 RUN mkdir screen
-COPY index.js .
-COPY Player.js .
-COPY testNightmare.js .
-COPY package.json .
+COPY player/index.js .
+COPY player/Player.js .
+COPY player/testNightmare.js .
+COPY player/package.json .
 RUN npm install
 
 ENV DEBUG=nightmare*

@@ -43,7 +43,7 @@ services:
       - "api"
   player1:
     build: 
-      context: https://github.com/webautotester/player.git
+      context: https://github.com/webautotester/wat.git
       dockerfile: ./player/Dockerfile
     image: "xblanc/wat_player"
     volumes:
@@ -53,7 +53,7 @@ services:
       - "mongo"
   player2:
     build: 
-      context: https://github.com/webautotester/player.git
+      context: https://github.com/webautotester/wat.git
       dockerfile: ./player/Dockerfile
     image: "xblanc/wat_player"
     volumes:
