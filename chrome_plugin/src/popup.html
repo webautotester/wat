@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+This page is shown when the extension button is clicked, because the
+"browser_action" field in manifest.json contains the "default_popup" key with
+value "popup.html".
+-->
+<html>
+<head>
+  <title>Web Automatic Tester</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+
+  <style>
+  html {
+    width: 500px;
+  }
+
+  body {
+    width: 500px;
+  }
+
+  #status {
+    /* avoid an excessively wide status text */
+    white-space: pre;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /*max-width: 1000px;*/
+  }
+
+
+  .glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+  }
+
+  @keyframes spin {
+      from { transform: scale(1) rotate(0deg);}
+      to { transform: scale(1) rotate(360deg);}
+  }
+
+  @-webkit-keyframes spinw {
+      from { -webkit-transform: rotate(0deg);}
+      to { -webkit-transform: rotate(360deg);}
+  }
+
+  @-moz-keyframes spinm {
+      from { -moz-transform: rotate(0deg);}
+      to { -moz-transform: rotate(360deg);}
+  }
+
+  .form-group .alert {
+    margin-bottom: 0;
+  }
+  </style>
+
+  <!--
+  - JavaScript and HTML must be in separate files: see our Content Security
+  - Policy documentation[1] for details and explanation.
+  -
+  - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+-->
+
+</head>
+<body>
+  <div id="app"/>
+  <script src="popup.bundle.js"></script>
+</body>
+</html>

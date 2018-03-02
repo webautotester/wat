@@ -1,0 +1,26 @@
+{
+  "name": "wat_scenario",
+  "version": "1.0.6",
+  "description": "JS Library For Creating Scrapping Scenario. Compliant with Puppeteer",
+  "main": "./lib/index.js",
+  "scripts": {
+    "pretest": "webpack",
+    "test": "mocha",
+    "build": "webpack"
+  },
+  "author": "Xavier Blanc",
+  "license": "MIT",
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "puppeteer": "^1.0.0"
+  }
+}

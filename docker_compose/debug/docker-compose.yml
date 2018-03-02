@@ -1,0 +1,66 @@
+version: '2'
+
+services:
+  mongo:
+    image: "mongo:3.0"
+    ports:
+      - "27017:27017"
+  rabbit:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  scheduler:
+    build: 
+      context: https://github.com/webautotester/wat.git
+      dockerfile: ./scheduler/Dockerfile
+    image: "xblanc/wat_scheduler"
+    depends_on:
+      - "rabbit"
+      - "mongo"
+  api:
+    build: 
+      context: https://github.com/webautotester/wat.git
+      dockerfile: ./api/Dockerfile
+    image: "xblanc/wat_api"
+    environment:
+      NODE_ENV: 'DEBUG'
+      JWT_SECRET: 'localsercretstoredinpublicgithubthisisnotsosecret'
+    depends_on:
+      - "rabbit"
+      - "mongo"
+  front:
+    build: 
+      context: https://github.com/webautotester/wat.git
+      dockerfile: ./front/DockerfileDebug
+    image: "xblanc/wat_front"
+    volumes:
+      - screens:/var/www/public/img/screen
+    ports:
+      - 8080:80
+    restart: always
+    depends_on:
+      - "api"
+  player1:
+    build: 
+      context: https://github.com/webautotester/player.git
+      dockerfile: ./player/Dockerfile
+    image: "xblanc/wat_player"
+    volumes:
+      - screens:/tmp/run/screen
+    depends_on:
+      - "rabbit"
+      - "mongo"
+  player2:
+    build: 
+      context: https://github.com/webautotester/player.git
+      dockerfile: ./player/Dockerfile
+    image: "xblanc/wat_player"
+    volumes:
+      - screens:/tmp/run/screen
+    depends_on:
+      - "rabbit"
+      - "mongo"
+
+volumes:
+  screens:

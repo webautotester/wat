@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "wat-chrome-plugin",
+  "version": "0.0.32.0",
+  "description": "This plugin is used to record E2E tests on any web site",
+  "author" : "Xavier Blanc",
+  "permissions": [
+    "webNavigation",
+    "tabs",
+    "activeTab",
+    "identity",
+    "*://*/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Wat Plugin",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.bundle.js"]
+  }
+}
