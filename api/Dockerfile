@@ -11,7 +11,7 @@ RUN n latest
 RUN mkdir /tmp/api
 WORKDIR /tmp/api
 
-COPY . .
+COPY api/. .
 
 RUN npm install
 
