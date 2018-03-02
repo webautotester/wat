@@ -18,13 +18,13 @@ RUN touch /var/log/watcron.log
 RUN mkdir /tmp/scheduler
 WORKDIR /tmp/scheduler
 RUN mkdir routes
-COPY routes/*.js routes/
-COPY index.js .
-COPY sendPlayMessage.js .
-COPY package.json .
+COPY scheduler/routes/*.js routes/
+COPY scheduler/index.js .
+COPY scheduler/sendPlayMessage.js .
+COPY scheduler/package.json .
 RUN npm install
 
-COPY run.sh .
+COPY scheduler/run.sh .
 
 EXPOSE 8090
 

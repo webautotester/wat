@@ -1,7 +1,7 @@
 FROM nginx:latest
 LABEL maintainer="Xavier Blanc <blancxav@gmail.com>"
 
-COPY nginx_prod.conf /etc/nginx/nginx.conf
+COPY front/nginx_prod.conf /etc/nginx/nginx.conf
 
 # Install node
 RUN apt-get update -y \
@@ -13,13 +13,13 @@ RUN n latest
 RUN mkdir /tmp/app
 WORKDIR /tmp/app
 
-COPY . .
-COPY nginx_prod.conf nginx.conf
+COPY front/. .
+COPY front/nginx_prod.conf nginx.conf
 
 RUN npm install
 RUN npm run prod
 
-COPY dev/app/img/demo.mp4 ops/app/img/
+COPY front/dev/app/img/demo.mp4 ops/app/img/
 
 RUN mkdir /var/www
 RUN mkdir /var/www/public
