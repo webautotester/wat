@@ -23,10 +23,7 @@ import SelectorAction from './SelectorAction';
 
 export default class ClickAction extends SelectorAction {
 	run(page) {
-		return Promise.all([
-			page.waitForNavigation(500),
-			page.click(this.selector),
-		]);
+		return Promise.all([page.waitFor(1000), page.click(this.selector)]);
 	}
 
 }
